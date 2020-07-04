@@ -11,14 +11,9 @@ function createMenuItem(name, price, type) {
 }
 
 function addIngredients(foodItem, ingredients) {
-  ingredients.length !== 0 ?
-  (
-    ingredients.forEach(item => {
-      foodItem !== item ?
-        ingredients.push(foodItem) :
-        ingredients.pop()
-    })
-  ) : ingredients.push(foodItem);
+  !ingredients.includes(foodItem) ?
+    ingredients.push(foodItem) :
+    ingredients
 }
 
 function formatPrice(price) {

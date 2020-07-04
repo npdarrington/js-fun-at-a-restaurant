@@ -15,11 +15,9 @@ class Chef {
 
     this.restaurant.menus[item.type].length > 0 ?
     (
-      this.restaurant.menus[item.type].forEach(itemName => {
-        item.name === itemName.name ?
+      this.restaurant.menus[item.type].some(name => name.name === item.name) ?
         string = `Yes, we're serving ${item.name} today!` :
         string = `Sorry, we aren't serving ${item.name} today.`
-      })
     ) :
     string = `Sorry, we aren't serving ${item.name} today.`
 

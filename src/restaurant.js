@@ -10,23 +10,17 @@ function createRestaurant(name) {
 }
 
 function addMenuItem(restaurant, menuItem) {
-  if (restaurant.menus[menuItem.type].length > 0) {
-      for(const item of restaurant.menus[menuItem.type]) {
-        if (menuItem.name !== item.name) {
-          restaurant.menus[menuItem.type].push(menuItem);
-        }
-      }
-  } else {
-    restaurant.menus[menuItem.type].push(menuItem)
-  }
+  !restaurant.menus[menuItem.type].includes(menuItem) ?
+    restaurant.menus[menuItem.type].push(menuItem) :
+    restaurant.menus[menuItem.type]
 }
 
 function removeMenuItem(restaurant, menuItem, menuType) {
   let removeItem;
 
-  if (restaurant.menus[menuType] !== undefined) {
-    removeItem = restaurant.menus[menuType].find(name =>  restaurant.menus[menuType].splice(name, 1));
-  }
+  restaurant.menus[menuType] !== undefined ?
+    removeItem = restaurant.menus[menuType].find(name => restaurant.menus[menuType].splice(name, 1))
+    : removeItem
 
   return (removeItem !== undefined ?
     `No one is eating our ${menuItem} - it has been removed from the ${menuType} menu!`
